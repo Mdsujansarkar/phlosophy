@@ -15,11 +15,13 @@ function philosophy_after_setup(){
 
     add_theme_support('html5', array("search-form","comment-list"));
 
-    add_theme_support('post-formats', array("image","gallery","audio","video","quiot","link"));
+    add_theme_support('post-formats', array("image","gallery","audio","video","quote","link"));
 
     add_editor_style("/assets/css/editorstyle.css");
 
     register_nav_menu("topmenu", __("Top Menu", "philosophy"));
+
+    add_image_size("philosophy-home-imagesize", 400, 400, true);
 
 }
 add_action('after_setup_theme','philosophy_after_setup');

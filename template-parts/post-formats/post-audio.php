@@ -1,10 +1,9 @@
 <article class="masonry__brick entry format-audio" data-aos="fade-up">
 
                     <div class="entry__thumb">
-                        <a href="single-audio.html" class="entry__thumb-link">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/thumbs/masonry/guitarman-400.jpg" 
-                                    srcset="<?php echo get_template_directory_uri(); ?>/assets/images/thumbs/masonry/guitarman-400.jpg 1x, images/thumbs/masonry/guitarman-800.jpg 2x" alt="">
-                        </a>
+                    <a href="<?php the_permalink(); ?>" class="entry__thumb-link">
+                                <?php the_post_thumbnail("philosophy-home-imagesize"); ?>
+                            </a>
                         <div class="audio-wrap">
                             <audio id="player" src="<?php echo get_template_directory_uri(); ?>/assets/media/AirReview-Landmarks-02-ChasingCorporate.mp3" width="100%" height="42" controls="controls"></audio>
                         </div>
