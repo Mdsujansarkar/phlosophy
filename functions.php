@@ -6,6 +6,7 @@
  }
 
  require_once get_theme_file_path("/inc/tgm.php");
+ require_once get_theme_file_path("/inc/attachment.php");
 
 function philosophy_after_setup(){
    load_theme_textdomain( 'philosophy', get_theme_file_path() . '/languages' );
@@ -27,6 +28,7 @@ function philosophy_after_setup(){
 add_action('after_setup_theme','philosophy_after_setup');
 
 function philosophy_assets(){
+    
     wp_enqueue_style( "fontawesome-css", get_theme_file_uri( "/assets/css/font-awesome/css/font-awesome.css" ), null, "1.0" );
 	wp_enqueue_style( "fonts-css", get_theme_file_uri( "/assets/css/fonts.css" ), null, "1.0" );
 	wp_enqueue_style( "base-css", get_theme_file_uri( "/assets/css/base.css" ), null, "1.0" );
@@ -41,3 +43,20 @@ function philosophy_assets(){
 
 }
 add_action("wp_enqueue_scripts", "philosophy_assets");
+
+
+
+function philosophy_navigation(){
+    global $wp_query;
+    $links = paginate_links(array(
+        'current'  => max(1, get_query_var('paged')),
+        'total'    => $wp_query -> max_num_pages,
+        'type'     => 'list',
+        'mid_size' =>3
+    ));
+    $links = str_replace("page-numbers", "pgn__num", $links);
+    $links = str_replace("<ul class='pgn__num'>", "<ul>", $links);
+    $links = str_replace("next pgn__num", "pgn__next", $links);
+    $links = str_replace("prev pgn__num", "pgn__prev", $links);
+    echo $links;
+}
